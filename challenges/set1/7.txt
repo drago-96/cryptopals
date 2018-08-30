@@ -1,0 +1,11 @@
+--2018-08-30 22:12:41--  https://cryptopals.com/static/challenge-data/7.txt
+Risoluzione di cryptopals.com (cryptopals.com)... 54.204.144.199
+Connessione a cryptopals.com (cryptopals.com)|54.204.144.199|:443... connesso.
+Richiesta HTTP inviata, in attesa di risposta... 200 OK
+Lunghezza: 3904 (3,8K) [text/plain]
+Salvataggio in: "7.txt"
+
+     0K ...                                                   100%  339M=0s
+
+2018-08-30 22:12:42 (339 MB/s) - "7.txt" salvato [3904/3904]
+
