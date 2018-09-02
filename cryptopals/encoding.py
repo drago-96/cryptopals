@@ -9,6 +9,10 @@ def b2h(b):
     return bytes(b).hex()
 
 
+def ba2l(ba):
+    return list(ba)
+
+
 def b64file_to_bytes(abs_path):
     with open(abs_path, 'r') as f:
         lines = f.readlines()
