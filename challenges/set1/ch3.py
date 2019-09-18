@@ -12,4 +12,4 @@ for i in range(255):
         max = e
         idx = i
 
-print(b2u8(seq_xor(b, [idx])))
+print(b2utf8(seq_xor(b, [idx])))

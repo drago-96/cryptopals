@@ -8,6 +8,7 @@ def load_file(filename):
     return os.path.join(script_dir, filename)
 
 
+# XOR of two bytearrays, not necessarily of same length
 def myxor(a, b):
     res = []
     for (c, d) in zip(a, b):
@@ -15,6 +16,7 @@ def myxor(a, b):
     return res
 
 
+# repeating XOR cipher
 def seq_xor(arr, key):
     i = 0
     res = []

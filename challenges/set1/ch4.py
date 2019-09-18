@@ -6,9 +6,6 @@ script_dir = os.path.dirname(__file__)
 filename = '4.txt'
 abs_file_path = os.path.join(script_dir, filename)
 
-freqs = load_frequencies()
-
-
 with open(abs_file_path, 'r') as f:
     max = 0
     for line in f:
@@ -22,4 +19,4 @@ with open(abs_file_path, 'r') as f:
                 idx = i
                 bx = b
 
-print(b2u8(seq_xor(bx, [idx])), max)
+print(b2utf8(seq_xor(bx, [idx])), max)

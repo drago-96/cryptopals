@@ -12,4 +12,4 @@ msg = b'Sopra la panca la capra campaaaa'
 enc = custom_AES_CBC(msg, key, IV, mode='e')
 assert msg == custom_AES_CBC(enc, key, IV, mode='d')
 
-print(b2u8(res))
+print(b2utf8(res))

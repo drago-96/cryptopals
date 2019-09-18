@@ -9,17 +9,17 @@ def PKCS7_pad(text, bl):
     ba = bytearray(text)
     r = len(ba) % bl
     if r == 0:
-        return ba
+        return bytes(ba)
     else:
         toadd = bl - r
         if toadd > 255:
             raise Exception("Too many bytes to pad")
-        return ba + bytearray([toadd] * toadd)
+        return bytes(ba + bytearray([toadd] * toadd))
 
 
 def AES_ECB(text, key, mode='e'):
     cipher = AES.new(key, AES.MODE_ECB)
-    text = bytes(PKCS7_pad(text, 16))
+    text = PKCS7_pad(text, 16)
     if mode == 'e':
         return cipher.encrypt(text)
     if mode == 'd':
