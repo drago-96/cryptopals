@@ -5,7 +5,7 @@ import random
 import base64
 
 
-def PKCS7_pad(text, bl):
+def PKCS7_pad(text, bl=16):
     ba = bytearray(text)
     r = len(ba) % bl
     if r == 0:
@@ -16,14 +16,20 @@ def PKCS7_pad(text, bl):
             raise Exception("Too many bytes to pad")
         return bytes(ba + bytearray([toadd] * toadd))
 
+def PKCS7_strip(data):
+    padding_length = data[-1]
+    return data[:- padding_length]
+
 
 def AES_ECB(text, key, mode='e'):
     cipher = AES.new(key, AES.MODE_ECB)
-    text = PKCS7_pad(text, 16)
     if mode == 'e':
+        text = PKCS7_pad(text, 16)
         return cipher.encrypt(text)
     if mode == 'd':
-        return cipher.decrypt(text)
+        text = bytes(text)
+        assert len(text) % 16 == 0
+        return PKCS7_strip(cipher.decrypt(text))
 
 
 def custom_AES_CBC(text, key, IV, mode='e'):
