@@ -1,4 +1,5 @@
 import os
+from itertools import zip_longest
 
 lib_dir = os.path.dirname(__file__)
 
@@ -9,11 +10,15 @@ def load_file(filename):
 
 
 # XOR of two bytearrays, not necessarily of same length
-def myxor(a, b):
+def myxor(a, b, fill=True):
     res = []
-    for (c, d) in zip(a, b):
+    if fill:
+        couples = zip_longest(a,b,fillvalue=0)
+    else:
+        couples = zip(a,b)
+    for (c, d) in couples:
         res.append(c ^ d)
-    return res
+    return bytearray(res)
 
 
 # repeating XOR cipher
@@ -24,7 +29,7 @@ def seq_xor(arr, key):
     for a in arr:
         res.append(a ^ key[i])
         i = (i + 1) % L
-    return res
+    return bytearray(res)
 
 
 # parse GET arguments

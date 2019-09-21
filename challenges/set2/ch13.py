@@ -17,7 +17,7 @@ class Victim:
 
     def decrypt_and_parse(self, cipher):
         dec = AES_ECB(cipher, self.key, mode='d')
-        return parse_GET(dec.decode())
+        return parse_GET(PKCS7_strip(dec).decode())
 
 
 email = "a@b.com"

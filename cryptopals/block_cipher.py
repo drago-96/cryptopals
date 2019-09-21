@@ -18,6 +18,8 @@ def PKCS7_pad(text, bl=16):
 
 def PKCS7_strip(data):
     padding_length = data[-1]
+    if data[-padding_length:] != bytes([padding_length] * padding_length):
+        raise ValueError
     return data[:- padding_length]
 
 
@@ -29,7 +31,7 @@ def AES_ECB(text, key, mode='e'):
     if mode == 'd':
         text = bytes(text)
         assert len(text) % 16 == 0
-        return PKCS7_strip(cipher.decrypt(text))
+        return cipher.decrypt(text)
 
 
 def custom_AES_CBC(text, key, IV, mode='e'):
